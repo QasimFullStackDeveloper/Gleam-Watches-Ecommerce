@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/contact" element={<ContactUs />} /> 
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
     </Router>
   );
