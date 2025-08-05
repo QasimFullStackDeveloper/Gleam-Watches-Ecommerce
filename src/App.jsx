@@ -1,10 +1,15 @@
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Checkout from "./pages/Checkout";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
-    <div className="bg-red-500 text-white p-10 text-center text-3xl font-bold">
-      Tailwind is Now Working!
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
+    </Router>
   );
 }
 
