@@ -55,7 +55,7 @@ function Products() {
               className="w-full h-40 object-contain mb-3 rounded"
             />
 
-            {/* 30% OFF & Cart Row */}
+            
             <div className="flex justify-between items-center mb-2">
               <div className="bg-red-800 text-white text-xs font-bold px-2 py-1 rounded">
                 30% OFF
@@ -90,7 +90,7 @@ function Products() {
         ))}
       </div>
 
-      {/* Modal */}
+      
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
