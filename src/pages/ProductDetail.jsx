@@ -8,8 +8,9 @@ import Watch2 from "/public/WatchImages/Black.png";
 import Watch3 from "/public/WatchImages/Red.png";
 import Watch4 from "/public/WatchImages/Black.png";
 import Watch6 from "/public/WatchImages/Red.png";
+import { Link } from "react-router-dom";
 
-export default function ProductCart() {
+export default function ProductDetail() {
   const [descriptionOpen, setDescriptionOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [shippingOpen, setShippingOpen] = useState(false);
@@ -83,9 +84,9 @@ export default function ProductCart() {
           ● Limited stock available
         </p>
         <div className="space-y-6">
-          <button className="w-full bg-[#713939] text-white font-bold text-lg py-5 rounded shadow hover:bg-[#5c2f2f]">
+          <Link to="/cart" className="w-full bg-[#713939] text-white font-bold text-lg py-5 rounded shadow hover:bg-[#5c2f2f]">
             Add to Cart
-          </button>
+          </Link>
 
           {/* Benefits */}
           <div className="flex items-center justify-between text-center text-md font-bold text-[#713939]">
