@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { CardElement, CardNumberElement, CardCvcElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Watchone from "/src/media/Watchone.webp";
 import Watchtwo from "/src/media/Watchtwo.jpeg";
 import CardsImage from "/src/media/Cards.png";
 
+const stripePromise = loadStripe("pk_test_51RF95eLKfw7LssxILSN3miYlmvwQ5svDacIK93XkGfpnZGhYBwjlwPHCqXcOEEio8OK9TODiptgDFD6j63VFIcR800mSt0Bls6");
+
 export default function Checkout() {
+  const stripe = useStripe();
+  const elements = useElements();
+
   const [cartItems, setCartItems] = useState([
     {
       name: "QUARDRO CRYSTAL WATCH IN GOLD",
       quantity: 1,
-      price: 677,
+      price: 989,
       image: Watchone,
     },
     {
@@ -16,7 +23,7 @@ export default function Checkout() {
       quantity: 1,
       price: 899,
       image: Watchtwo,
-    }
+    },
   ]);
 
   const [formData, setFormData] = useState({
@@ -28,22 +35,80 @@ export default function Checkout() {
     postalCode: "",
     city: "",
     phone: "",
-    cardNumber: "",
-    expiry: "",
-    ccv: "",
-    cardName: ""
+    cardName: "",
+    cardExpiration: "" // New field for Credit Card Expiration Date
   });
 
-  const isFormComplete = Object.values(formData).every((value) => value.trim() !== "");
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    // Add validation logic as needed
+    return newErrors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      const cardElement = elements.getElement(CardElement);
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+      });
+
+      if (error) {
+        console.error(error);
+        alert("Payment failed: " + error.message);
+      } else {
+        setSubmitted(true);
+        alert("Payment processed successfully!");
+        // Resetting form
+        setFormData({
+          email: "",
+          country: "",
+          firstName: "",
+          lastName: "",
+          address: "",
+          postalCode: "",
+          city: "",
+          phone: "",
+          cardName: "",
+          cardExpiration: "", // Reset the new field too
+        });
+      }
+    }
+  };
+
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  const isFormComplete = Object.values(formData).every(
+    (value) => value.trim() !== ""
+  );
+
+  const inputClass = (field) =>
+    `border p-2 rounded-md w-full ${
+      errors[field] ? "border-red-500" : "border-gray-300"
+    }`;
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center py-10 px-4 font-sans">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl"
+      >
         <div className="space-y-6">
           <h2 className="text-lg font-semibold text-center">Express checkout</h2>
           <div className="flex justify-center">
-            <button className="bg-[#7e4b4b] text-white text-sm px-6 py-2 rounded-md h-[40px] w-[160px] cursor-pointer hover:bg-[#5e2e2e] transition-all">
+            <button
+              type="button"
+              className="bg-[#7e4b4b] text-white text-sm px-6 py-2 rounded-md h-[40px] w-[160px] cursor-pointer hover:bg-[#5e2e2e] transition-all"
+            >
               Google Pay
             </button>
           </div>
@@ -53,51 +118,113 @@ export default function Checkout() {
             <hr className="w-full border-gray-300" />
           </div>
 
+          {/* Contact Form */}
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-black">Contact</h3>
-            <input placeholder="Email" className="border p-2 rounded-md w-full" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
-            <input placeholder="Country/Region" className="border p-2 rounded-md w-full" value={formData.country} onChange={(e) => setFormData({ ...formData, country: e.target.value })} />
+            <input
+              placeholder="Email"
+              className={inputClass("email")}
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+            />
+            {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+            <input
+              placeholder="Country/Region"
+              className={inputClass("country")}
+              value={formData.country}
+              onChange={(e) =>
+                setFormData({ ...formData, country: e.target.value })
+              }
+            />
+            {errors.country && <p className="text-red-500 text-xs">{errors.country}</p>}
             <div className="grid grid-cols-2 gap-2">
-              <input placeholder="First Name" className="border p-2 rounded-md w-full" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} />
-              <input placeholder="Last Name" className="border p-2 rounded-md w-full" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} />
+              <div>
+                <input
+                  placeholder="First Name"
+                  className={inputClass("firstName")}
+                  value={formData.firstName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, firstName: e.target.value })
+                  }
+                />
+                {errors.firstName && <p className="text-red-500 text-xs">{errors.firstName}</p>}
+              </div>
+              <div>
+                <input
+                  placeholder="Last Name"
+                  className={inputClass("lastName")}
+                  value={formData.lastName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lastName: e.target.value })
+                  }
+                />
+                {errors.lastName && <p className="text-red-500 text-xs">{errors.lastName}</p>}
+              </div>
             </div>
-            <input placeholder="Address" className="border p-2 rounded-md w-full" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} />
-            <input placeholder="Apartment, Suite, etc. (Optional)" className="border p-2 rounded-md w-full" />
+            <input
+              placeholder="Address"
+              className={inputClass("address")}
+              value={formData.address}
+              onChange={(e) =>
+                setFormData({ ...formData, address: e.target.value })
+              }
+            />
+            {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
+            <input
+              placeholder="Apartment, Suite, etc. (Optional)"
+              className="border p-2 rounded-md w-full"
+            />
             <div className="grid grid-cols-2 gap-2">
-              <input placeholder="Postal Code" className="border p-2 rounded-md w-full" value={formData.postalCode} onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })} />
-              <input placeholder="City" className="border p-2 rounded-md w-full" value={formData.city} onChange={(e) => setFormData({ ...formData, city: e.target.value })} />
+              <div>
+                <input
+                  placeholder="Postal Code"
+                  className={inputClass("postalCode")}
+                  value={formData.postalCode}
+                  onChange={(e) =>
+                    setFormData({ ...formData, postalCode: e.target.value })
+                  }
+                />
+                {errors.postalCode && <p className="text-red-500 text-xs">{errors.postalCode}</p>}
+              </div>
+              <div>
+                <input
+                  placeholder="City"
+                  className={inputClass("city")}
+                  value={formData.city}
+                  onChange={(e) =>
+                    setFormData({ ...formData, city: e.target.value })
+                  }
+                />
+                {errors.city && <p className="text-red-500 text-xs">{errors.city}</p>}
+              </div>
             </div>
-            <input placeholder="Phone" className="border p-2 rounded-md w-full" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+            <input
+              placeholder="Phone"
+              className={inputClass("phone")}
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+            />
+            {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
 
             <div className="pt-1">
               <label className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4 appearance-none border border-gray-300 rounded relative checked:bg-[#7e4b4b] checked:border-transparent"
-                  style={{
-                    backgroundImage:
-                      "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E\")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "14px"
-                  }}
-                />
-                <span className="text-xs text-gray-600">Save this information for next time</span>
+                <input type="checkbox" className="w-4 h-4" />
+                <span className="text-xs text-gray-600">
+                  Save this information for next time
+                </span>
               </label>
             </div>
           </div>
 
+          {/* Payment Section */}
           <h3 className="text-sm font-semibold text-black">Payment</h3>
-          <p className="text-xs text-gray-600 -mt-2">All transactions are secured</p>
-
           <div className="space-y-3">
             <div className="relative">
-              <input
-                placeholder="Card Number"
-                className="border p-2 pr-28 rounded-md w-full"
-                value={formData.cardNumber}
-                onChange={(e) => setFormData({ ...formData, cardNumber: e.target.value })}
-              />
+              <CardNumberElement className="border p-2 rounded-md w-full" />
               <img
                 src={CardsImage}
                 alt="Payment Logos"
@@ -105,46 +232,74 @@ export default function Checkout() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <input placeholder="Expiry date (MM/YY)" className="border p-2 rounded-md w-full" value={formData.expiry} onChange={(e) => setFormData({ ...formData, expiry: e.target.value })} />
-              <input placeholder="CCV" className="border p-2 rounded-md w-full" value={formData.ccv} onChange={(e) => setFormData({ ...formData, ccv: e.target.value })} />
-            </div>
-            <input placeholder="Name On Card" className="border p-2 rounded-md w-full" value={formData.cardName} onChange={(e) => setFormData({ ...formData, cardName: e.target.value })} />
+            <input
+              placeholder="Name On Card"
+              className={inputClass("cardName")}
+              value={formData.cardName}
+              onChange={(e) =>
+                setFormData({ ...formData, cardName: e.target.value })
+              }
+            />
+            {errors.cardName && <p className="text-red-500 text-xs">{errors.cardName}</p>}
+            
+            {/* New Field for Card Expiration Date */}
+            <input
+              placeholder="Expiration Date (MM/YY)"
+              className={inputClass("cardExpiration")}
+              value={formData.cardExpiration}
+              onChange={(e) =>
+                setFormData({ ...formData, cardExpiration: e.target.value })
+              }
+            />
+            {errors.cardExpiration && <p className="text-red-500 text-xs">{errors.cardExpiration}</p>}
+            
+              {/* CVC Field */}
+              
+             <CardCvcElement className="border p-2 rounded-md w-full" />
+              {errors.cardCvc && (
+                <p className="text-red-500 text-xs">{errors.cardCvc}</p>
+              )}
 
             <div className="pt-2">
               <label className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4 appearance-none border border-gray-300 rounded relative checked:bg-[#7e4b4b] checked:border-transparent"
-                  style={{
-                    backgroundImage:
-                      "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E\")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "14px"
-                  }}
-                />
-                <span className="text-xs text-gray-600">Use shipping address as billing address</span>
+                <input type="checkbox" className="w-4 h-4" />
+                <span className="text-xs text-gray-600">
+                  Use shipping address as billing address
+                </span>
               </label>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <button className={`text-white text-sm py-2 w-[140px] rounded-md h-[36px] mt-4 cursor-pointer transition-all ${isFormComplete ? "bg-[#7e4b4b] hover:bg-[#5e2e2e]" : "bg-[#a78585]"}`}>
+            <button
+              type="submit"
+              className={`text-white text-sm py-2 w-[140px] rounded-md h-[36px] mt-4 cursor-pointer transition-all ${
+                isFormComplete
+                  ? "bg-[#7e4b4b] hover:bg-[#5e2e2e]"
+                  : "bg-[#a78585]"
+              }`}
+            >
               Pay Now
             </button>
           </div>
         </div>
 
+        {/* Cart Summary */}
         <div className="border border-gray-300 p-4 rounded-md w-full bg-[#f7f7f7]">
           <div className="space-y-4">
             {cartItems.length === 0 ? (
-              <p className="text-gray-400 text-sm text-center">Your cart is empty</p>
+              <p className="text-gray-400 text-sm text-center">
+                Your cart is empty
+              </p>
             ) : (
               cartItems.map((item, index) => (
                 <div key={index} className="flex items-center gap-4 pb-3">
                   <div className="relative w-20 h-20 flex-shrink-0">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded" />
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover rounded"
+                    />
                     <span className="absolute -top-2 -right-2 bg-[#7e4b4b] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                       {item.quantity}
                     </span>
@@ -163,7 +318,11 @@ export default function Checkout() {
           </div>
 
           <div className="flex items-center gap-2 mb-4 mt-4">
-            <input type="text" placeholder="Discount Code" className="border p-2 rounded-md flex-grow text-sm" />
+            <input
+              type="text"
+              placeholder="Discount Code"
+              className="border p-2 rounded-md flex-grow text-sm"
+            />
             <button className="bg-[#7e4b4b] text-white text-xs px-3 py-1.5 rounded-md h-[36px] cursor-pointer hover:bg-[#5e2e2e] transition-all">
               Apply code
             </button>
@@ -187,7 +346,7 @@ export default function Checkout() {
             </div>
           )}
         </div>
-      </div>
+      </form>
     </div>
   );
 }
