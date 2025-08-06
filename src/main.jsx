@@ -10,7 +10,7 @@ import Cart from './components/Cart.jsx';
 import Checkout from "./pages/Checkout.jsx";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './components/NotFound.jsx';
 
 // Load your Stripe public key

@@ -15,10 +15,10 @@ export default function CollectionSection() {
                 <div className='grid grid-cols-2 space-x-8 gap-10'>
                     {/* Map through your collection items here */}
                     {collectionItems.map(item => (
-                        <div class="relative w-full h-auto" key={item.id}>
-                            <img src={item.image} class="w-full h-auto object-cover " alt={item.name} />
-                            <div class="absolute inset-0 flex items-center justify-center bg-opacity-50">
-                                <a href="#" class="bg-[#774141] rounded-md cursor-pointer md:font-bold font-semibold md:text-lg text-sm text-white border border-transparent md:px-10 px-1 md:py-4 py-2">{item.name}</a>
+                        <div className="relative w-full h-auto" key={item.id}>
+                            <img src={item.image} className="w-full h-auto object-cover " alt={item.name} />
+                            <div className="absolute inset-0 flex items-center justify-center bg-opacity-50">
+                                <a href="#" className="bg-[#774141] rounded-md cursor-pointer md:font-bold font-semibold md:text-lg text-sm text-white border border-transparent md:px-10 px-1 md:py-4 py-2">{item.name}</a>
                             </div>
                         </div>
                     ))}
