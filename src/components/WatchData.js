@@ -23,7 +23,7 @@ const watchData = [
   { id: 9, name: 'QUADRO CRYSTAL WATCH IN GOLD', price: '$677', image: watch9 },
   { id: 10, name: 'QUADRO CRYSTAL WATCH IN GOLD', price: '$677', image: watch10 },
   { id: 11, name: 'QUADRO CRYSTAL WATCH IN BLACK', price: '$899', image: watch11 },
-  { id: 12, name: 'QUADRO CRYSTAL WATCH IN GOLD', price: '$677', image: watch12 },
+  { id: 12, name: 'QUADRO CRYSTAL WATCH IN GOLD', price: '$677', image: watch12, category: "Men Watches" },
 ];
 
 export default watchData;

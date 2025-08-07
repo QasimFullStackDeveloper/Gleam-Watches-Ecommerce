@@ -4,7 +4,6 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import logo from '/Logo/GLEAM.png';
 
-
 function App() {
   return (
     <div className="min-h-screen">
