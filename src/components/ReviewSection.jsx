@@ -25,7 +25,6 @@ const reviews = [
     review: 'Looks elegant and feels premium. Loving it so far.',
     rating: 4,
   },
-  // Add more reviews as needed
 ];
 
 export default function ReviewSection() {
@@ -56,7 +55,7 @@ export default function ReviewSection() {
           <i className="ri-arrow-left-s-line"></i>
         </button>
 
-        <div className="flex items-center justify-center gap-8 overflow-hidden">
+        <div className="flex items-center justify-center gap-6 overflow-hidden">
           {reviews.map((review, index) => (
             <div
               key={review.id}

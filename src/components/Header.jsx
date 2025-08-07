@@ -24,19 +24,19 @@ export default function Header({ logo}) {
           <span className='flex items-center space-x-4'>
             <Link to=""><img src={search} alt="Search Icon" /></Link>
             <Link to=""><img src={user} alt="User Icon" /></Link>
-            <Link to=""><img src={shoppingbag} alt="Shopping Bag Icon" /></Link>
+            <Link to="/ShoppingCart"><img src={shoppingbag} alt="Shopping Bag Icon" /></Link>
           </span>
         </div>
         <div className="flex justify-center items-center py-4">
           <nav className="hidden md:flex gap-6 space-x-8">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="hover:text-[#922e2e] transition-colors text-[#794747]  font-semibold"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
 

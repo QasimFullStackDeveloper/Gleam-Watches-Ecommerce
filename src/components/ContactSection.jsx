@@ -13,7 +13,7 @@ export default function ContactSection() {
             placeholder="Email"
             className="border border-gray-400 bg-white px-4 py-2 w-64 rounded"
           />
-          <button className="bg-[#774141] text-white md:px-6 px-2 md:py-2 py-1 text-sm md:text-base lg:text-lg rounded">SIGN UP</button>
+          <button className="bg-[#774141] cursor-pointer text-white md:px-6 px-2 md:py-2 py-1 text-sm md:text-base lg:text-lg rounded">SIGN UP</button>
         </div>
         <p className="text-xs text-[#622525] mt-4 max-w-lg mx-auto">
           By signing up, I confirm that I'm 16 years or older, that I want to receive personalized marketing

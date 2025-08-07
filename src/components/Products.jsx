@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import watchData from '../components/WatchData'; // Assuming you have a watchData.js file with watch details
-import HeroSection from './HeroSection';
+import HeroSection from './ProductHeroSection';
+import ContactSection from './ContactSection';
+import AboutSection from './AboutSection';
 
-function Products() {
+export default function Products() {
   const [showAll, setShowAll] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const gridRef = useRef(null);
@@ -19,30 +21,91 @@ function Products() {
   // Hardcoded add to cart
   const handleAddToCart = () => {
     alert('Added to cart');
-    navigate('/cart');
+    navigate('/ShoppingCart');
   };
 
-  const visibleWatches = showAll ? watchData : watchData.slice(0, 12);
 
+  const [showFilters, setShowFilters] = useState(false);
+  const [categoryFilter, setCategoryFilter] = useState('All');
+  const [priceSort, setPriceSort] = useState(null);
+
+  const applyFilters = () => {
+    let filtered =  showAll ? watchData : watchData.slice(0, 12);
+
+    if (categoryFilter === 'Sale') {
+      filtered = filtered.filter((item) => item.discount > 0);
+    } else if (categoryFilter !== 'All') {
+      filtered = filtered.filter((item) => item.category === categoryFilter);
+    }
+
+    if (priceSort === 'low') {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (priceSort === 'high') {
+      filtered.sort((a, b) => b.price - a.price);
+    }
+
+    return filtered;
+  };
   return (
     <>
       {/* Banner */}
       <HeroSection />
 
       <section className="bg-white text-gray-800 px-6 py-10 font-sans">
-       <h1 className="text-center text-3xl font-bold mb-12">MEN'S WATCHES</h1>
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
-        >
-          {visibleWatches.map((item, index) => (
+        <h1 className="text-center text-3xl font-bold mb-12">MEN'S WATCHES</h1>
+
+        {/* Filter Button */}
+        <div className="flex justify-start mb-6 max-w-6xl mx-auto relative">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="bg-pink-800 text-white px-5 py-2 rounded hover:bg-gray-900 transition"
+          >
+            <img
+              src="/Filter.png"
+              alt="Filter Icon"
+              className="inline w-5 h-5 mr-2"
+            />
+            Filters
+          </button>
+
+          {showFilters && (
+            <div className="absolute left-0 top-14 w-64 bg-white shadow-lg border rounded-md p-4 z-50">
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Category</label>
+                <select
+                  onChange={(e) => setCategoryFilter(e.target.value)}
+                  value={categoryFilter}
+                  className="w-full border rounded px-3 py-2"
+                >
+                  <option value="All">All</option>
+                  <option value="Men">Men</option>
+                  <option value="Women">Women</option>
+                  <option value="Sale">Sale</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">Price</label>
+                <select
+                  onChange={(e) => setPriceSort(e.target.value)}
+                  value={priceSort || ''}
+                  className="w-full border rounded px-3 py-2"
+                >
+                  <option value="">None</option>
+                  <option value="low">Low to High</option>
+                  <option value="high">High to Low</option>
+                </select>
+              </div>
+            </div>
+          )}
+        </div>
+        
+        {/* Products Grid */}
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {applyFilters().map((item) => (
             <div
               key={item.id}
-              className="bg-gray-100 border p-4 rounded-md shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out cursor-pointer"
-              style={{
-                animationDelay: `${index * 0.1}s`,
-                animationFillMode: 'forwards',
-              }}
+              className="bg-gray-100 border p-4 rounded-md shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out cursor-pointer relative"
             >
               <img
                 src={item.image}
@@ -51,19 +114,24 @@ function Products() {
                 className="w-full h-40 object-contain mb-3 rounded"
               />
 
-              <div className="flex justify-between items-center mb-2">
-                <div className="bg-pink-800 text-white text-xs font-bold px-4 py-1 rounded">
-                  30% OFF
-                </div>
+              <div className="flex justify-between items-center mb-1">
+                {/* Discount badge */}
+                {item.discount > 0 ? (
+                  <span className="text-xs font-bold text-red-700 bg-red-100 px-2 py-1 rounded">
+                    {item.discount}% OFF
+                  </span>
+                ) : (
+                  <span></span>
+                )}
 
-                {/* Cart icon to auto navigate with hardcoded item */}
+                {/* Cart icon */}
                 <div
-                  className="text-gray-700 hover:text-pink-800 cursor-pointer"
-                  onClick={handleAddToCart}
+                  className="text-gray-700 hover:text-red-600"
+                  onClick={() => handleAddToCart(item)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
+                    className="w-6 h-6 cursor-pointer"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -78,9 +146,10 @@ function Products() {
                 </div>
               </div>
 
-              <h3 className="text-sm font-bold line-clamp-2 h-9">{item.name}</h3>
-              <p className="text-xs font-semibold text-amber-500 mt-1">
-                PRICE <span className="font-bold ml-1">{item.price}</span>
+              {/* Product Name & Price */}
+              <h3 className="text-sm font-bold line-clamp-2 h-10">{item.name}</h3>
+              <p className="text-xs font-semibold text-gray-500 mt-1">
+                PRICE <span className="text-yellow-800 font-bold ml-1">${item.price}</span>
               </p>
             </div>
           ))}
@@ -110,8 +179,11 @@ function Products() {
           </button>
         </div>
       </section>
+      {/* About Section */}
+      <AboutSection />
+
+      {/* Contact Section */}
+      <ContactSection />
     </>
   );
 }
-
-export default Products;

@@ -6,12 +6,12 @@ import AboutUs from './pages/aboutUs.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import Watch from './components/Products.jsx';
 import WatchDetail from './pages/ProductDetail.jsx';
-import Cart from './components/Cart.jsx';
+import ShoppingCart from './components/ShoppingCart.jsx';
 import Checkout from "./pages/Checkout.jsx";
+import NotFound from './components/NotFound.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import NotFound from './components/NotFound.jsx';
 
 // Load your Stripe public key
 const stripePromise = loadStripe("pk_test_51RF95eLKfw7LssxILSN3miYlmvwQ5svDacIK93XkGfpnZGhYBwjlwPHCqXcOEEio8OK9TODiptgDFD6j63VFIcR800mSt0Bls6");
@@ -51,9 +51,9 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: '/cart',
-        element: <Cart />,
-      }
+        path: '/ShoppingCart',
+        element: <ShoppingCart />,
+      },
     ],
   },
 ]);
