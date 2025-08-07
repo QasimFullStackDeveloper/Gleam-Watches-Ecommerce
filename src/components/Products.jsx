@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Hero from './Hero';
+import watchData from '../components/WatchData'; // Assuming you have a watchData.js file with watch details
+import HeroSection from './HeroSection';
 
 function Products() {
   const [showAll, setShowAll] = useState(false);
@@ -21,14 +22,15 @@ function Products() {
     navigate('/cart');
   };
 
-  const visibleWatches = showAll ? watchData : watchData.slice(0, 6);
+  const visibleWatches = showAll ? watchData : watchData.slice(0, 12);
 
   return (
     <>
       {/* Banner */}
-      <Hero />
+      <HeroSection />
 
       <section className="bg-white text-gray-800 px-6 py-10 font-sans">
+       <h1 className="text-center text-3xl font-bold mb-12">MEN'S WATCHES</h1>
         <div
           ref={gridRef}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
