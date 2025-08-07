@@ -3,7 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, CardNumberElement, CardCvcElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Watchone from "/CheckoutPageImg/media/Watchone.webp";
 import Watchtwo from "/CheckoutPageImg/media/Watchtwo.jpeg";
-import CardsImage from "CheckoutPageImg/media/Cards.png";
+import CardsImage from "/CheckoutPageImg/media/Cards.png";
 
 const stripePromise = loadStripe("pk_test_51RF95eLKfw7LssxILSN3miYlmvwQ5svDacIK93XkGfpnZGhYBwjlwPHCqXcOEEio8OK9TODiptgDFD6j63VFIcR800mSt0Bls6");
 
