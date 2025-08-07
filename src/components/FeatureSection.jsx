@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import watchData from "./WatchData";
 
 
-function HomePageF() {
+function FeatureSection() {
   const navigate = useNavigate();
   const featuredWatches = watchData.slice(0, 6); 
 
@@ -43,4 +43,4 @@ function HomePageF() {
   );
 }
 
-export default HomePageF;
+export default FeatureSection;

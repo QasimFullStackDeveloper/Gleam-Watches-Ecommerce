@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import watch1 from '../assets/watch 1.png';
-import HomePageF from './HomePageF';
+import watch1 from '/WatchProduct/watch 1.png';
+import { Link } from 'react-router-dom';
+import FeatureSection from './FeatureSection';
 
 const initialCart = [
   {
@@ -95,13 +96,13 @@ function Cart() {
       {cartItems.length > 0 && (
         <div className="mt-8 text-right">
           <p className="text-lg font-bold">Total: ${total}</p>
-          <button className="mt-4 bg-pink-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition cursor-pointer">
+          <Link to="/checkout" className="mt-4 bg-pink-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition cursor-pointer">
             PROCEED TO CHECKOUT
-          </button>
+          </Link>
         </div>
       )}
 
-      <HomePageF />
+      <FeatureSection />
     </div>
   );
 }
