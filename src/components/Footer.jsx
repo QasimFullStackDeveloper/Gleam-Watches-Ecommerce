@@ -1,10 +1,9 @@
-import Logo from '/Logo/GLEAM.png';
 import Stripe from '/Home/StripeLogo.png';
 import paypal from '/Home/Paypal.png';
 import Visa from '/Home/VisaLogo.png';
 import MasterCard from '/Home/masterCardLogo.png';
 
-export default function Footer() {
+export default function Footer({ logo }) {
     return (
         <footer className="bg-[#622525B2] text-white pt-12 pb-6 sm:px-6 px-4">
             <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -28,7 +27,7 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                    <img src={Logo} alt="Gleam Watch Brand" className='w-full h-auto object-cover' />
+                    <img src={logo} alt="Gleam Watch Brand" className='w-full h-auto object-cover' />
                 </div>
             </div>
             <div className='max-w-4xl mx-auto text-center'>

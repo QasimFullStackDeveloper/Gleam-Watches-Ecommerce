@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from './Hero';
-import watchData from './WatchData';
-import watch1 from '../assets/watch 1.png'; // Importing hardcoded watch image
 
 function Products() {
   const [showAll, setShowAll] = useState(false);

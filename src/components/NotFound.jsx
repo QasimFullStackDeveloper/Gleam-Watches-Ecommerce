@@ -1,10 +1,11 @@
-import Footer from "../Home/Footer";
-import Header from "../Home/Header";
+import Footer from "./Footer";
+import Header from "./Header";
+import logo from '/Logo/GLEAM.png';
 
 export default function NotFound() {
   return (
     <>
-      <Header />
+      <Header logo={logo} />
       <section className="py-28 bg-white font-inter">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
           <div className="flex flex-col items-center justify-center text-center px-4 mb-16">
@@ -20,7 +21,7 @@ export default function NotFound() {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer logo={logo}/>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import watch1 from '../assets/watch 1.png';
+import watch1 from '/WatchProduct/watch 1.png';
 import { Link } from 'react-router-dom';
 import FeatureSection from './FeatureSection';
 
