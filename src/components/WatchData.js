@@ -1,15 +1,15 @@
-import watch1 from '../assets/watch 1.png';
-import watch2 from '../assets/watch 2.png';
-import watch3 from '../assets/watch 3.png';
-import watch4 from '../assets/watch 1.png';
-import watch5 from '../assets/watch 2.png';
-import watch6 from '../assets/watch 3.png';
-import watch7 from '../assets/watch 1.png';
-import watch8 from '../assets/watch 2.png';
-import watch9 from '../assets/watch 3.png';
-import watch10 from '../assets/watch 1.png';
-import watch11 from '../assets/watch 2.png';
-import watch12 from '../assets/watch 3.png';
+import watch1 from '/WatchProduct/watch 1.png';
+import watch2 from '/WatchProduct/watch 2.png';
+import watch3 from '/WatchProduct/watch 3.png';
+import watch4 from '/WatchProduct/watch 1.png';
+import watch5 from '/WatchProduct/watch 2.png';
+import watch6 from '/WatchProduct/watch 3.png';
+import watch7 from '/WatchProduct/watch 1.png';
+import watch8 from '/WatchProduct/watch 2.png';
+import watch9 from '/WatchProduct/watch 3.png';
+import watch10 from '/WatchProduct/watch 1.png';
+import watch11 from '/WatchProduct/watch 2.png';
+import watch12 from '/WatchProduct/watch 3.png';
 
 const watchData = [
   { id: 1, name: 'QUADRO CRYSTAL WATCH IN GOLD', price: '$677', image: watch1 },

@@ -1,17 +1,17 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './Home/Header';
-import Footer from './Home/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import logo from '/Logo/GLEAM.png';
 
 
 function App() {
   return (
     <div className="min-h-screen">
       <ScrollToTop />
-      <Header />
+      <Header logo={logo} />
       <Outlet />
-      <Footer />
+      <Footer logo={logo} />
     </div>
   );
 }

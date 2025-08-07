@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '/Logo/GLEAM.png';
 import user from '/Icon/user-line.svg';
 import search from '/Icon/search-line.svg';
 import shoppingbag from '/Icon/shopping-bag-line.svg';
-export default function Header({ }) {
+export default function Header({ logo}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Navigation links
   const navigation = [

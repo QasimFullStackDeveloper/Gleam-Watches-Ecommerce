@@ -47,7 +47,7 @@ export default function ReviewSection() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-4 relative">
+    <div className="max-w-6xl mx-auto py-10 px-4 relative">
       <div className="flex items-center justify-between">
         <button
           onClick={handlePrev}
@@ -56,11 +56,11 @@ export default function ReviewSection() {
           <i className="ri-arrow-left-s-line"></i>
         </button>
 
-        <div className="flex items-center justify-center gap-6 w-full overflow-hidden">
+        <div className="flex items-center justify-center gap-8 overflow-hidden">
           {reviews.map((review, index) => (
             <div
               key={review.id}
-              className={`transition-all duration-500 transform ${getPositionClass(index)} bg-white p-6 rounded-lg hover:scale-110 hover:shadow-2xl`}
+              className={`transition-all duration-500 transform ${getPositionClass(index)} bg-white p-6 border border-black rounded-lg hover:scale-110 hover:shadow-2xl`}
               style={{ minWidth: index === currentIndex ? '300px' : '250px' }}
             >
               <div className="flex flex-col items-center">
