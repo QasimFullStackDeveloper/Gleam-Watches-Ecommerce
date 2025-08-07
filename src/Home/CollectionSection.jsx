@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CardImg1 from '/Home/CollectionCard1.png';
 import CardImg2 from '/Home/CollectionCard2.png';
 
@@ -18,7 +19,7 @@ export default function CollectionSection() {
                         <div className="relative w-full h-auto" key={item.id}>
                             <img src={item.image} className="w-full h-auto object-cover " alt={item.name} />
                             <div className="absolute inset-0 flex items-center justify-center bg-opacity-50">
-                                <a href="#" className="bg-[#774141] rounded-md cursor-pointer md:font-bold font-semibold md:text-lg text-sm text-white border border-transparent md:px-10 px-1 md:py-4 py-2">{item.name}</a>
+                                <Link to="/watches" className="bg-[#774141] rounded-md cursor-pointer md:font-bold font-semibold md:text-lg text-sm text-white border border-transparent md:px-10 px-1 md:py-4 py-2">{item.name}</Link>
                             </div>
                         </div>
                     ))}

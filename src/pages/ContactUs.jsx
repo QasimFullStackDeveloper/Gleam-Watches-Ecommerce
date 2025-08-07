@@ -184,7 +184,7 @@ const ContactUs = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`bg-[#7B3F3F] text-white font-medium py-2 px-6 rounded-md transition-all duration-200 ${
+            className={`bg-[#7B3F3F] text-white font-medium cursor-pointer py-2 px-6 rounded-md transition-all duration-200 ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-[#5e2e2e]"
             }`}
           >
