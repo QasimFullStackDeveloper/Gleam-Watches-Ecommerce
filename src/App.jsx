@@ -12,21 +12,20 @@ import { loadStripe } from '@stripe/stripe-js';
 // Load your Stripe public key
 const stripePromise = loadStripe("pk_test_51RF95eLKfw7LssxILSN3miYlmvwQ5svDacIK93XkGfpnZGhYBwjlwPHCqXcOEEio8OK9TODiptgDFD6j63VFIcR800mSt0Bls6");
 
-
 function App() {
   return (
-    <Router>
+    <BrowserRouter> {/* <-- use BrowserRouter instead of Router */}
       <Elements stripe={stripePromise}>
-      <Routes>
-        <Route path="/watches" element={<Watch />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/Sales" element={<ProductCart />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/contact" element={<ContactUs />} />
-      </Routes>
+        <Routes>
+          <Route path="/watches" element={<Watch />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/Sales" element={<ProductCart />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/contact" element={<ContactUs />} />
+        </Routes>
       </Elements>
-    </Router>
+    </BrowserRouter>
   );
 }
 
