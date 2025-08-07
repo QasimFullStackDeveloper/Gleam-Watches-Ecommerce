@@ -20,6 +20,13 @@ const watchData = [
   { id: 10, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Sale', image: watch5, discount: 50 },
   { id: 11, name: 'Quardro Crystal Watch in Black', price: 899, category: 'Men', image: watch1, discount: 0 },
   { id: 12, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Women', image: watch2, discount: 0 },
+  { id: 13, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Sale', image: watch3, discount: 30 },
+  { id: 14, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Sale', image: watch2, discount: 20 },
+  { id: 15, name: 'Quardro Crystal Watch in Black', price: 899, category: 'Men', image: watch5, discount: 0 },
+  { id: 16, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Sale', image: watch1, discount: 10 },
+  { id: 17, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Sale', image: watch5, discount: 50 },
+  { id: 18, name: 'Quardro Crystal Watch in Black', price: 899, category: 'Men', image: watch1, discount: 0 },
+  { id: 19, name: 'Quardro Crystal Watch in Gold', price: 677, category: 'Women', image: watch2, discount: 0 },
 ];
 
 function Products() {
