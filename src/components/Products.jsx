@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import watchData from '../components/WatchData'; // Assuming you have a watchData.js file with watch details
 import HeroSection from './ProductHeroSection';
 import ContactSection from './ContactSection';
@@ -103,7 +103,8 @@ export default function Products() {
         {/* Products Grid */}
         <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {applyFilters().map((item) => (
-            <div
+            <Link
+              to="/WatchDetail"
               key={item.id}
               className="bg-gray-100 border p-4 rounded-md shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out cursor-pointer relative"
             >
@@ -151,7 +152,7 @@ export default function Products() {
               <p className="text-xs font-semibold text-gray-500 mt-1">
                 PRICE <span className="text-yellow-800 font-bold ml-1">${item.price}</span>
               </p>
-            </div>
+            </Link>
           ))}
         </div>
 

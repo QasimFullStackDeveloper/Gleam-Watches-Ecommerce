@@ -31,7 +31,7 @@ function FeatureSection() {
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
           {featuredWatches.map((item, index) => (
-            <div
+            <Link to="/WatchDetail"
               key={item.id}
               className="bg-gray-100 border p-4 rounded-md shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out cursor-pointer"
               style={{
@@ -77,7 +77,7 @@ function FeatureSection() {
               <p className="text-xs font-semibold text-amber-500 mt-1">
                 PRICE <span className="font-bold ml-1">{item.price}</span>
               </p>
-            </div>
+            </Link>
           ))}
         </div>
 
