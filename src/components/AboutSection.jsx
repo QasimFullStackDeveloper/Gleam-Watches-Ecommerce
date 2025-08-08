@@ -21,7 +21,7 @@ export default function AboutSection() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="max-w-6xl mx-auto py-10 px-4 grid grid-cols-1 font-[lato] md:grid-cols-2 gap-10">
       <div className="flex justify-center items-center">
         <img
           src={selectedImage}
@@ -31,7 +31,7 @@ export default function AboutSection() {
       </div>
 
       <div className="flex flex-col justify-center space-y-6">
-        <h2 className="text-3xl font-serif text-[#922E2E] mb-4">DETAILS EASY TO LOVE</h2>
+        <h2 className="text-3xl text-[#922E2E] font-[montserrat] mb-4">DETAILS EASY TO LOVE</h2>
         <p className="text-[#6e4e4e] text-lg leading-relaxed">
           Gleam watches is one of the most prestigious and iconic luxury watch brands in the world, known for its precision, craftsmanship, and timeless design. Founded in 1905 in London and later moved to Switzerland, Rolex has built a reputation for creating high-quality timepieces that combine elegance with durability.
         </p>

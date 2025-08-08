@@ -98,17 +98,17 @@ export default function Checkout() {
     }`;
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center py-10 px-4 font-sans">
+    <div className="min-h-screen bg-white flex flex-col items-center py-10 px-4 font-[lato]">
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl"
       >
         <div className="space-y-6">
-          <h2 className="text-lg font-semibold text-center">Express checkout</h2>
+          <h2 className="text-lg font-semibold font-[montserrat] text-center">Express checkout</h2>
           <div className="flex justify-center">
             <button
               type="button"
-              className="bg-[#7e4b4b] text-white text-sm px-6 py-2 rounded-md h-[40px] w-[160px] cursor-pointer hover:bg-[#5e2e2e] transition-all"
+              className="bg-[#000000] hover:bg-[#D4AF37] hover:text-black text-white text-sm px-6 py-2 rounded-md h-[40px] w-[160px] cursor-pointer transition-all"
             >
               Google Pay
             </button>
@@ -121,7 +121,7 @@ export default function Checkout() {
 
           {/* Contact Form */}
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-black">Contact</h3>
+            <h3 className="text-sm font-semibold font-[montserrat] text-black">Contact</h3>
             <input
               placeholder="Email"
               className={inputClass("email")}
@@ -273,7 +273,7 @@ export default function Checkout() {
               type="submit"
               className={`text-white text-sm py-2 w-[140px] rounded-md h-[36px] mt-4 cursor-pointer transition-all ${
                 isFormComplete
-                  ? "bg-[#7e4b4b] hover:bg-[#5e2e2e]"
+                  ? "bg-[#000000] hover:bg-[#D4AF37]"
                   : "bg-[#a78585]"
               }`}
             >
@@ -304,7 +304,7 @@ export default function Checkout() {
                   </div>
                   <div className="flex justify-between items-center flex-1">
                     <p className="text-sm text-gray-1500 w-3/4">{item.name}</p>
-                    <p className="text-sm font-bold text-[#7e4b4b]">${item.price}</p>
+                    <p className="text-sm font-bold text-[#D4AF37]">${item.price}</p>
                   </div>
                 </div>
               ))
@@ -321,7 +321,7 @@ export default function Checkout() {
               placeholder="Discount Code"
               className="border p-2 rounded-md flex-grow text-sm"
             />
-            <button className="bg-[#7e4b4b] text-white text-xs px-3 py-1.5 rounded-md h-[36px] cursor-pointer hover:bg-[#5e2e2e] transition-all">
+            <button className="bg-[#000000] hover:bg-[#D4AF37] hover:text-black text-white text-xs px-3 py-1.5 rounded-md h-[36px] cursor-pointer transition-all">
               Apply code
             </button>
           </div>

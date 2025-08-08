@@ -51,14 +51,14 @@ export default function Products() {
       {/* Banner */}
       <HeroSection />
 
-      <section className="bg-white text-gray-800 px-6 py-10 font-sans">
-        <h1 className="text-center text-3xl font-bold mb-12">MEN'S WATCHES</h1>
+      <section className="bg-white font-[lato] text-gray-800 px-6 py-10">
+        <h1 className="text-center text-3xl font-bold font-[montserrat] mb-12">MEN'S WATCHES</h1>
 
         {/* Filter Button */}
         <div className="flex justify-start mb-6 max-w-6xl mx-auto relative">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="bg-pink-800 text-white px-5 py-2 rounded hover:bg-gray-900 transition"
+            className="bg-[#000000] hover:bg-[#D4AF37] text-white px-5 py-2 rounded transition"
           >
             <img
               src="/Filter.png"
@@ -71,7 +71,7 @@ export default function Products() {
           {showFilters && (
             <div className="absolute left-0 top-14 w-64 bg-white shadow-lg border rounded-md p-4 z-50">
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Category</label>
+                <label className="block text-sm font-[montserrat] font-medium mb-1">Category</label>
                 <select
                   onChange={(e) => setCategoryFilter(e.target.value)}
                   value={categoryFilter}
@@ -85,7 +85,7 @@ export default function Products() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Price</label>
+                <label className="block text-sm font-[montserrat] font-medium mb-1">Price</label>
                 <select
                   onChange={(e) => setPriceSort(e.target.value)}
                   value={priceSort || ''}
@@ -118,7 +118,7 @@ export default function Products() {
               <div className="flex justify-between items-center mb-1">
                 {/* Discount badge */}
                 {item.discount > 0 ? (
-                  <span className="text-xs font-bold text-red-700 bg-red-100 px-2 py-1 rounded">
+                  <span className="text-xs font-bold font-[montserrat] text-red-700 bg-red-100 px-2 py-1 rounded">
                     {item.discount}% OFF
                   </span>
                 ) : (
@@ -149,8 +149,8 @@ export default function Products() {
 
               {/* Product Name & Price */}
               <h3 className="text-sm font-bold line-clamp-2 h-10">{item.name}</h3>
-              <p className="text-xs font-semibold text-gray-500 mt-1">
-                PRICE <span className="text-yellow-800 font-bold ml-1">${item.price}</span>
+              <p className="text-xs font-semibold font-[montserrat] text-gray-500 mt-1">
+                PRICE <span className="text-[#D4AF37] text-sm font-bold ml-1">${item.price}</span>
               </p>
             </Link>
           ))}
@@ -174,7 +174,7 @@ export default function Products() {
         <div className="text-center mt-10">
           <button
             onClick={handleToggle}
-            className="bg-pink-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition cursor-pointer"
+            className="bg-[#000000] hover:bg-[#D4AF37] text-white px-6 py-2 rounded transition cursor-pointer"
           >
             {showAll ? 'VIEW LESS' : 'VIEW MORE'}
           </button>

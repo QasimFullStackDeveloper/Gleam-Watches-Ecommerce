@@ -15,14 +15,14 @@ export default function Header({ logo}) {
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 font-inter">
+    <header className="bg-white shadow-sm font-[lato] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className='flex flex-row items-center py-4'>
           <Link to="/" className="flex-10/12 md:flex justify-center items-center space-x-2">
             <img src={logo} alt="Gleam Watch Logo" className="h-16 w-auto" />
           </Link>
           <span className='flex items-center space-x-4'>
-            <Link to=""><img src={search} alt="Search Icon" /></Link>
+            {/* <Link to=""><img src={search} alt="Search Icon" /></Link> */}
             <Link to=""><img src={user} alt="User Icon" /></Link>
             <Link to="/ShoppingCart"><img src={shoppingbag} alt="Shopping Bag Icon" /></Link>
           </span>
@@ -33,7 +33,7 @@ export default function Header({ logo}) {
               <Link
                 key={item.name}
                 to={item.href}
-                className="hover:text-[#922e2e] transition-colors text-[#794747]  font-semibold"
+                className="hover:text-[#D4AF37] transition-colors text-black font-[montserrat] font-semibold"
               >
                 {item.name}
               </Link>
@@ -45,7 +45,7 @@ export default function Header({ logo}) {
             className="md:hidden w-8 h-8 flex items-center justify-center cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <i className={`${isMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-2xl text-[#794747]`}></i>
+            <i className={`${isMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-2xl text-black`}></i>
           </button>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function Header({ logo}) {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block py-2 text-[#794747] hover:text-[#922e2e] transition-colors font-medium"
+                className="block py-2 text-black hover:text-[#D4AF37] transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

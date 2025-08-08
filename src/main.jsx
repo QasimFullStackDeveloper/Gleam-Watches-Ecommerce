@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 import Home from './Home/Home.jsx';
-import AboutUs from './pages/aboutUs.jsx';
+import AboutUs from './pages/AboutUs.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import Watch from './components/Products.jsx';
 import WatchDetail from './pages/ProductDetail.jsx';

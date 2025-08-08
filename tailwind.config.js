@@ -7,8 +7,9 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-                serif: ['Merriweather', 'ui-serif', 'Georgia'],
+                lato: ['Lato', 'ui-sans-serif', 'sans-serif','system-ui'],
+                montserrat: ['Montserrat' , 'sans-serif'],
+                playfair: ['"Playfair Display"', 'serif'],
             },
         },
     },
