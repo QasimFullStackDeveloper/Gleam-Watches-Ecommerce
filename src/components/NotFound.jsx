@@ -1,6 +1,6 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import logo from '/Logo/GLEAM.png';
+import logo from '/Logo/LogoImg.png';
 
 export default function NotFound() {
   return (
