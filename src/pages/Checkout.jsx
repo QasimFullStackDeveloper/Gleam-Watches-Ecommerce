@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, CardNumberElement, CardCvcElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useNavigate } from "react-router-dom"; 
 import Watchone from "/CheckoutPageImg/media/Watchone.webp";
 import Watchtwo from "/CheckoutPageImg/media/Watchtwo.jpeg";
 import CardsImage from "/CheckoutPageImg/media/Cards.png";
@@ -10,6 +11,7 @@ const stripePromise = loadStripe("pk_test_51RF95eLKfw7LssxILSN3miYlmvwQ5svDacIK9
 export default function Checkout() {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate(); 
 
   const [cartItems, setCartItems] = useState([
     {
@@ -36,7 +38,7 @@ export default function Checkout() {
     city: "",
     phone: "",
     cardName: "",
-    cardExpiration: "" // New field for Credit Card Expiration Date
+    cardExpiration: "" 
   });
 
   const [errors, setErrors] = useState({});
@@ -44,7 +46,6 @@ export default function Checkout() {
 
   const validate = () => {
     const newErrors = {};
-    // Add validation logic as needed
     return newErrors;
   };
 
@@ -66,7 +67,6 @@ export default function Checkout() {
       } else {
         setSubmitted(true);
         alert("Payment processed successfully!");
-        // Resetting form
         setFormData({
           email: "",
           country: "",
@@ -77,8 +77,9 @@ export default function Checkout() {
           city: "",
           phone: "",
           cardName: "",
-          cardExpiration: "", // Reset the new field too
+          cardExpiration: "", 
         });
+        navigate("/order-success"); 
       }
     }
   };
@@ -242,7 +243,6 @@ export default function Checkout() {
             />
             {errors.cardName && <p className="text-red-500 text-xs">{errors.cardName}</p>}
             
-            {/* New Field for Card Expiration Date */}
             <input
               placeholder="Expiration Date (MM/YY)"
               className={inputClass("cardExpiration")}
@@ -252,8 +252,6 @@ export default function Checkout() {
               }
             />
             {errors.cardExpiration && <p className="text-red-500 text-xs">{errors.cardExpiration}</p>}
-            
-              {/* CVC Field */}
               
              <CardCvcElement className="border p-2 rounded-md w-full" />
               {errors.cardCvc && (

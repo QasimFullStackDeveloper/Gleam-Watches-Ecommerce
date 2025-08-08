@@ -8,6 +8,7 @@ import Watch from './components/Products.jsx';
 import WatchDetail from './pages/ProductDetail.jsx';
 import ShoppingCart from './components/ShoppingCart.jsx';
 import Checkout from "./pages/Checkout.jsx";
+import OrderSuccess from './pages/OrderSuccess.jsx';
 import NotFound from './components/NotFound.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/ShoppingCart',
         element: <ShoppingCart />,
+      },
+      {
+        path: '/order-success', // ✅ Step 2: Add this route
+        element: <OrderSuccess />,
       },
     ],
   },
