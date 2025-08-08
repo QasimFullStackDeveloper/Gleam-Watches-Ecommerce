@@ -1,8 +1,8 @@
 import watch1 from '/WatchProduct/watch 1.png';
 import watch2 from '/WatchProduct/watch 2.png';
 import watch3 from '/WatchProduct/watch 3.png';
-import watch4 from '/WatchProduct/watch 1.png';
-import watch5 from '/WatchProduct/watch 2.png';
+import watch4 from '/WatchProduct/watch 4.png';
+import watch5 from '/WatchProduct/watch 5.png';
 
 // const watchData = [
 //   { id: 1, name: 'QUADRO CRYSTAL WATCH IN GOLD', price: '$677', image: watch1 },
