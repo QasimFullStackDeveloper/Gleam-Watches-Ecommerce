@@ -53,8 +53,9 @@ export default function ProductDetail() {
               <button
                 key={index}
                 onClick={() => setCurrentImage(index)}
-                className={`w-3 h-3 rounded-full ${currentImage === index ? "bg-[#622525]" : "bg-gray-400"
-                  }`}
+                className={`w-3 h-3 rounded-full ${
+                  currentImage === index ? "bg-[#622525]" : "bg-gray-400"
+                }`}
               />
             ))}
           </div>
@@ -74,8 +75,9 @@ export default function ProductDetail() {
               .map((_, idx) => (
                 <span
                   key={idx}
-                  className={`w-[58px] h-[58px] text-[58px] leading-[58px] flex items-center justify-center cursor-pointer ${idx < rating ? "text-yellow-400" : "text-black"
-                    }`}
+                  className={`w-[58px] h-[58px] text-[58px] leading-[58px] flex items-center justify-center cursor-pointer ${
+                    idx < rating ? "text-yellow-400" : "text-black"
+                  }`}
                   onClick={() => setRating(idx + 1)}
                 >
                   &#9733;
@@ -87,7 +89,10 @@ export default function ProductDetail() {
             ● Limited stock available
           </p>
           <div className="space-y-6">
-            <Link to="/ShoppingCart" className="flex justify-center py-3 bg-[#713939] text-white font-bold text-lg rounded-md shadow hover:bg-[#5c2f2f]">
+            <Link
+              to="/ShoppingCart"
+              className="flex justify-center py-3 bg-[#713939] text-white font-bold text-lg rounded-md shadow hover:bg-[#5c2f2f]"
+            >
               Add to Cart
             </Link>
 
@@ -116,14 +121,21 @@ export default function ProductDetail() {
                   className="w-full flex justify-between items-center cursor-pointer py-2 border-b"
                 >
                   <span className="font-small">DESCRIPTION</span>
-                  <span className="text-4xl">{returnOpen ? "∧" : "∨"}</span>
+                  <span className="text-4xl">
+                    {descriptionOpen ? (
+                      <i className="ri-arrow-up-s-line"></i>
+                    ) : (
+                      <i className="ri-arrow-down-s-line"></i>
+                    )}
+                  </span>
                 </button>
+
                 {descriptionOpen && (
                   <p className="pt-2 text-gray-600">
                     This brand-new watch shape features several vintage-inspired
-                    details. The cushion-shaped case evokes classic vintage men's
-                    watches. At the same time, the linen-embossed print on the
-                    dial enhances its nostalgic design.
+                    details. The cushion-shaped case evokes classic vintage
+                    men's watches. At the same time, the linen-embossed print on
+                    the dial enhances its nostalgic design.
                   </p>
                 )}
               </div>
@@ -135,7 +147,13 @@ export default function ProductDetail() {
                   className="w-full flex justify-between items-center cursor-pointer py-2 border-b"
                 >
                   <span className="font-small">DETAILS</span>
-                  <span className="text-4xl">{returnOpen ? "∧" : "∨"}</span>
+                  <span className="text-4xl">
+                    {detailsOpen ? (
+                      <i className="ri-arrow-up-s-line"></i>
+                    ) : (
+                      <i className="ri-arrow-down-s-line"></i>
+                    )}
+                  </span>
                 </button>
                 {detailsOpen && (
                   <ul className="list-disc pl-6 pt-2 text-gray-600">
@@ -150,15 +168,22 @@ export default function ProductDetail() {
               <div>
                 <button
                   onClick={() => setShippingOpen(!shippingOpen)}
-                  className="w-full flex justify-between items-center py-2 border-b"
+                  className="w-full flex justify-between items-center cursor-pointer py-2 border-b"
                 >
                   <span className="font-small">SHIPPING INFORMATION</span>
-                  <span className="text-4xl">{returnOpen ? "∧" : "∨"}</span>
+                  <span className="text-4xl">
+                    {shippingOpen ? (
+                      <i className="ri-arrow-up-s-line"></i>
+                    ) : (
+                      <i className="ri-arrow-down-s-line"></i>
+                    )}
+                  </span>
                 </button>
+
                 {shippingOpen && (
                   <p className="pt-2 text-gray-600">
-                    Standard delivery within 3-5 business days. Free shipping for
-                    orders over $100.
+                    Standard delivery within 3-5 business days. Free shipping
+                    for orders over $100.
                   </p>
                 )}
               </div>
@@ -167,11 +192,18 @@ export default function ProductDetail() {
               <div>
                 <button
                   onClick={() => setReturnOpen(!returnOpen)}
-                  className="w-full flex justify-between items-center py-2"
+                  className="w-full flex justify-between items-center cursor-pointer py-2 border-b"
                 >
                   <span className="font-small">RETURN</span>
-                  <span className="text-4xl">{returnOpen ? "∧" : "∨"}</span>
+                  <span className="text-4xl">
+                    {returnOpen ? (
+                      <i className="ri-arrow-up-s-line"></i>
+                    ) : (
+                      <i className="ri-arrow-down-s-line"></i>
+                    )}
+                  </span>
                 </button>
+
                 {returnOpen && (
                   <p className="pt-2 text-gray-600">
                     Easy 15-day return policy. Contact support for assistance.
@@ -191,6 +223,5 @@ export default function ProductDetail() {
       {/* Contact Section */}
       <ContactSection />
     </>
-
   );
 }
