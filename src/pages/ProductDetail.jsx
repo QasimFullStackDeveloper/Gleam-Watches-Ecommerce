@@ -1,13 +1,13 @@
 // src/pages/ProductPage.jsx
 import React, { useState, useEffect } from "react";
-import Shipping from "/public/cart/Shipping.png";
-import Return from "/public/cart/return.png";
-import Warrenty from "/public/cart/Warrenty.png";
-import Watch from "/public/WatchImages/Gold.png";
-import Watch2 from "/public/WatchImages/Black.png";
-import Watch3 from "/public/WatchImages/Red.png";
-import Watch4 from "/public/WatchImages/Black.png";
-import Watch6 from "/public/WatchImages/Red.png";
+import Shipping from "/Cart/Shipping.png";
+import Return from "/Cart/return.png";
+import Warrenty from "/Cart/Warrenty.png";
+import Watch from "/WatchImages/Gold.png";
+import Watch2 from "/WatchImages/Black.png";
+import Watch3 from "/WatchImages/Red.png";
+import Watch4 from "/WatchImages/Black.png";
+import Watch6 from "/WatchImages/Red.png";
 import AboutSection from "../components/AboutSection";
 import FeatureSection from "../components/FeatureSection";
 import ReviewSection from "../components/ReviewSection";
@@ -37,7 +37,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <div className="px-4 py-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 font-sans">
+      <div className="px-4 py-8 max-w-7xl mx-auto grid font-[lato] grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Image Section */}
         <div className="bg-gray-100 p-10 rounded-md flex flex-col items-center justify-center">
           {/* Image */}
@@ -53,9 +53,8 @@ export default function ProductDetail() {
               <button
                 key={index}
                 onClick={() => setCurrentImage(index)}
-                className={`w-3 h-3 rounded-full ${
-                  currentImage === index ? "bg-[#622525]" : "bg-gray-400"
-                }`}
+                className={`w-3 h-3 rounded-full ${currentImage === index ? "bg-[#000000] cursor-pointer" : "bg-gray-400 hover:bg-[#D4AF37] cursor-pointer"
+                  }`}
               />
             ))}
           </div>
@@ -64,7 +63,7 @@ export default function ProductDetail() {
         {/* Info Section */}
         <div className=" w-100 max-w-[750px] mt-10">
           <div className="flex justify-between ">
-            <h2 className="text-xl font-semibold">CRYSTAL WATCH IN GOLD</h2>
+            <h2 className="text-xl font-[montserrat] font-semibold">CRYSTAL WATCH IN GOLD</h2>
             <p className="text-[#622525] text-xl font-bold">677$</p>
           </div>
 
@@ -75,9 +74,8 @@ export default function ProductDetail() {
               .map((_, idx) => (
                 <span
                   key={idx}
-                  className={`w-[58px] h-[58px] text-[58px] leading-[58px] flex items-center justify-center cursor-pointer ${
-                    idx < rating ? "text-yellow-400" : "text-black"
-                  }`}
+                  className={`w-[58px] h-[58px] text-[58px] leading-[58px] flex items-center justify-center cursor-pointer ${idx < rating ? "text-yellow-400" : "text-black"
+                    }`}
                   onClick={() => setRating(idx + 1)}
                 >
                   &#9733;
@@ -89,10 +87,7 @@ export default function ProductDetail() {
             ● Limited stock available
           </p>
           <div className="space-y-6">
-            <Link
-              to="/ShoppingCart"
-              className="flex justify-center py-3 bg-[#713939] text-white font-bold text-lg rounded-md shadow hover:bg-[#5c2f2f]"
-            >
+            <Link to="/ShoppingCart" className="flex justify-center py-3 bg-[#000000] hover:bg-[#D4AF37] text-white font-bold text-lg rounded-md shadow">
               Add to Cart
             </Link>
 

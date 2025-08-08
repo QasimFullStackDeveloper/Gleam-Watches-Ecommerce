@@ -4,17 +4,9 @@ import watchData from "./WatchData";
 
 
 function FeatureSection() {
-  const [showAll, setShowAll] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const gridRef = useRef(null);
     const navigate = useNavigate();
-  
-    const handleToggle = () => {
-      if (showAll) {
-        gridRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-      setShowAll(!showAll);
-    };
   
     // Hardcoded add to cart
     const handleAddToCart = () => {
@@ -24,8 +16,8 @@ function FeatureSection() {
   const featuredWatches = watchData.slice(0, 6); 
 
   return (
-    <section className="bg-white text-gray-800 px-6 py-10 font-sans">
-       <h1 className="text-center text-3xl font-bold mb-12">FEATURED PRODUCTS</h1>
+    <section className="bg-white text-gray-800 font-[lato] px-6 py-10">
+       <h1 className="text-center text-3xl font-bold font-[montserrat] mb-12">FEATURED PRODUCTS</h1>
         <div
           ref={gridRef}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
@@ -47,13 +39,13 @@ function FeatureSection() {
               />
 
               <div className="flex justify-between items-center mb-2">
-                <div className="bg-pink-800 text-white text-xs font-bold px-4 py-2 rounded">
+                <div className="bg-[#000000] hover:bg-[#D4AF37] hover:text-black text-white text-xs font-bold px-4 py-2 rounded">
                   30% OFF
                 </div>
 
                 {/* Cart icon to auto navigate with hardcoded item */}
                 <div
-                  className="text-gray-700 hover:text-pink-800 cursor-pointer"
+                  className="text-gray-700 hover:text-[#D4AF37] cursor-pointer"
                   onClick={handleAddToCart}
                 >
                   <svg
@@ -74,13 +66,13 @@ function FeatureSection() {
               </div>
 
               <h3 className="text-sm font-bold line-clamp-2 h-9">{item.name}</h3>
-              <p className="text-xs font-semibold text-amber-500 mt-1">
+              <p className="text-xs font-[montserrat] font-semibold text-[#D4AF37] mt-1">
                 PRICE <span className="font-bold ml-1">{item.price}</span>
               </p>
             </Link>
           ))}
         </div>
-
+          
         {/* Image Zoom Modal */}
         {selectedImage && (
           <div
@@ -97,7 +89,7 @@ function FeatureSection() {
 
         {/* View More Button */}
       <div className="text-center mt-10">
-        <Link to="/watches" className="bg-red-900 text-white px-6 py-2 rounded hover:bg-gray-900 transition cursor-pointer">
+        <Link to="/watches" className="bg-[#000000] hover:bg-[#D4AF37] text-white px-6 py-2 rounded transition cursor-pointer">
           VIEW MORE
         </Link>
       </div>

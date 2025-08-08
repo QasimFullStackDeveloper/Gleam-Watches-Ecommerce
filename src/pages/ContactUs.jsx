@@ -74,7 +74,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8">
+    <div className="min-h-screen bg-white flex font-[lato] flex-col items-center px-4 py-8">
       <h1 className="text-lg font-semibold text-center mb-4 text-[#7B3F3F]">
         Contact us
       </h1>
@@ -85,7 +85,7 @@ const ContactUs = () => {
         noValidate
       >
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium font-[montserrat] text-gray-700 mb-1">
             Contact
           </label>
           <input
@@ -105,7 +105,7 @@ const ContactUs = () => {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-[montserrat] font-medium text-gray-700 mb-1">
               First Name
             </label>
             <input
@@ -123,7 +123,7 @@ const ContactUs = () => {
             )}
           </div>
           <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-[montserrat] font-medium text-gray-700 mb-1">
               Last Name
             </label>
             <input
@@ -162,7 +162,7 @@ const ContactUs = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-[montserrat] font-medium text-gray-700 mb-1">
             Details
           </label>
           <textarea
@@ -184,8 +184,8 @@ const ContactUs = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`bg-[#7B3F3F] text-white font-medium cursor-pointer py-2 px-6 rounded-md transition-all duration-200 ${
-              isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-[#5e2e2e]"
+            className={`bg-[#000000] text-white font-medium cursor-pointer py-2 px-6 rounded-md transition-all duration-200 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-[#D4AF37] hover:text-black"
             }`}
           >
             {isSubmitting ? "Submitting..." : "Submit"}

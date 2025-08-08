@@ -46,8 +46,8 @@ export default function ShoppingCart() {
 
   return (
     <>
-      <div className="px-6 py-10 max-w-4xl mx-auto text-gray-800">
-        <h1 className="text-3xl font-bold mb-6">SHOPPING CART</h1>
+      <div className="px-6 py-10 max-w-4xl mx-auto font-[lato] text-gray-800">
+        <h1 className="text-3xl font-[montserrat] font-bold mb-6">SHOPPING CART</h1>
 
         {cartItems.length === 0 ? (
           <p className="text-center text-gray-500">Your cart is empty.</p>
@@ -97,7 +97,7 @@ export default function ShoppingCart() {
 
         {cartItems.length > 0 && (
           <div className="mt-8 text-right">
-            <p className="text-lg mb-3 font-bold">Total: ${total}</p>
+            <p className="text-lg mb-3 font-[montserrat] font-bold">Total: ${total}</p>
             <Link to="/checkout" className="mt-4 bg-pink-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition cursor-pointer">
               PROCEED TO CHECKOUT
             </Link>
