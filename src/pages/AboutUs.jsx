@@ -1,5 +1,5 @@
 import React from "react";
-import citizen from "/Citizen/citizen.png";
+import citizen from "/Citizen/citizen-min.png";
 import ContactSection from "../components/ContactSection";
 
 export default function AboutUs() {

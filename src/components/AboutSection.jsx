@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import AboutImg1 from '/Home/AboutImg1.png';
-import AboutImg2 from '/Home/AboutImg2.png';
-import AboutImg3 from '/Home/AboutImg3.png';
-import AboutImg4 from '/Home/AboutImg4.png';
-import AboutImg5 from '/Home/AboutImg5.png';
+import AboutImg2 from '/Home/AboutImg2-min.png';
+import AboutImg1 from '/Home/AboutImg1-min.png';
+import AboutImg3 from '/Home/AboutImg3-min.png';
+import AboutImg4 from '/Home/AboutImg4-min.png';
+import AboutImg5 from '/Home/AboutImg5-min.png';
 
 const images = [
   AboutImg1,

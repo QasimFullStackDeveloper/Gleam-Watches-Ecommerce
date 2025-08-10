@@ -59,14 +59,14 @@ const OrderConfirmation = () => {
       </p>
 
       {/* Button */}
-    <a href="/watches">
+    <Link to="/watches">
       <button
         type="button"
-        className="bg-[#7b4a4a] text-white font-bold px-6 py-3 mt-6 mx-auto block rounded shadow-md hover:bg-[#5a3535] transition-colors cursor-pointer"
+        className="bg-[#000000] hover:bg-[#D4AF37] hover:text-black text-white font-bold px-6 py-3 mt-6 mx-auto block rounded shadow-md transition-colors cursor-pointer"
       >
         CONTINUE SHOPPING
       </button>
-    </a>
+    </Link>
     </div>
    
   );
