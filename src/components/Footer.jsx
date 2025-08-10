@@ -1,13 +1,13 @@
-import Stripe from '/Home/StripeLogo.png';
-import paypal from '/Home/Paypal.png';
-import Visa from '/Home/VisaLogo.png';
-import MasterCard from '/Home/masterCardLogo.png';
+import Stripe from '/Home/StripeLogo-min.png';
+import paypal from '/Home/Paypal-min.png';
+import Visa from '/Home/VisaLogo-min.png';
+import MasterCard from '/Home/masterCardLogo-min.png';
 import { Link } from 'react-router-dom';
 
 export default function Footer({ logo }) {
     return (
         <footer className="bg-[#622525B2] font-[lato] text-white pt-12 pb-6">
-            <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="max-w-4xl md:mx-auto mx-3.5 grid grid-cols-2 md:grid-cols-3 gap-6">
                 <div className="flex flex-col items-start">
                     <h3 className="font-extrabold font-[montserrat] text-2xl mb-2">LEGAL</h3>
                     <ul className="space-y-2 text-md font-semibold">

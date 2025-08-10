@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, CardNumberElement, CardCvcElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom"; 
-import Watchone from "/CheckoutPageImg/media/Watchone.webp";
-import Watchtwo from "/CheckoutPageImg/media/Watchtwo.jpeg";
-import CardsImage from "/CheckoutPageImg/media/Cards.png";
+import Watchone from "/WatchProduct/watch 2-min.png";
+import Watchtwo from "/CheckoutPageImg/media/Watchtwo-min.jpeg";
+import CardsImage from "/CheckoutPageImg/media/Cards-min.png";
 
 const stripePromise = loadStripe("pk_test_51RF95eLKfw7LssxILSN3miYlmvwQ5svDacIK93XkGfpnZGhYBwjlwPHCqXcOEEio8OK9TODiptgDFD6j63VFIcR800mSt0Bls6");
 

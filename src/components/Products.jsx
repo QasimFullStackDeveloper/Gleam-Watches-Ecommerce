@@ -52,7 +52,7 @@ export default function Products() {
       <HeroSection />
 
       <section className="bg-white font-[lato] text-gray-800 px-6 py-10">
-        <h1 className="text-center text-3xl font-bold font-[montserrat] mb-12">MEN'S WATCHES</h1>
+        <h1 className="text-center md:text-3xl text-xl md:font-bold font-semibold font-[montserrat] mb-12">MEN'S WATCHES</h1>
 
         {/* Filter Button */}
         <div className="flex justify-start mb-6 max-w-6xl mx-auto relative">
@@ -112,7 +112,7 @@ export default function Products() {
                 src={item.image}
                 alt={item.name}
                 onClick={() => setSelectedImage(item.image)}
-                className="w-full h-40 object-contain mb-3 rounded"
+                className="w-full md:h-40 h-20 object-contain mb-3 rounded"
               />
 
               <div className="flex justify-between items-center mb-1">

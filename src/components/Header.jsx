@@ -57,7 +57,7 @@ export default function Header({ logo}) {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block py-2 text-black hover:text-[#D4AF37] transition-colors font-medium"
+                className="block text-black hover:text-[#D4AF37] transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

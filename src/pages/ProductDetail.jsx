@@ -1,13 +1,11 @@
 // src/pages/ProductPage.jsx
 import React, { useState, useEffect } from "react";
-import Shipping from "/Cart/Shipping.png";
-import Return from "/Cart/return.png";
-import Warrenty from "/Cart/Warrenty.png";
-import Watch from "/WatchImages/Gold.png";
-import Watch2 from "/WatchImages/Black.png";
-import Watch3 from "/WatchImages/Red.png";
-import Watch4 from "/WatchImages/Black.png";
-import Watch6 from "/WatchImages/Red.png";
+import Shipping from "/Cart/Shipping-min.png";
+import Return from "/Cart/return-min.png";
+import Warrenty from "/Cart/Warrenty-min.png";
+import watch1 from '/WatchProduct/watch 1-min.png';
+import watch2 from '/WatchProduct/watch 2-min.png';
+import watch3 from '/WatchProduct/watch 3-min.png';
 import AboutSection from "../components/AboutSection";
 import FeatureSection from "../components/FeatureSection";
 import ReviewSection from "../components/ReviewSection";
@@ -20,7 +18,7 @@ export default function ProductDetail() {
   const [shippingOpen, setShippingOpen] = useState(false);
   const [returnOpen, setReturnOpen] = useState(false);
   const [rating, setRating] = useState(0); // User-selected rating (1-5)
-  const productImages = [Watch, Watch2, Watch3, Watch4, Watch6];
+  const productImages = [watch1, watch2, watch3, watch2, watch1];
   const [currentImage, setCurrentImage] = useState(0);
 
   // Submit rating automatically whenever it changes
